@@ -1,4 +1,4 @@
-jumping = 0
-jumppower = 0
-grounded = false
+jumppower = -5
+jump = false
 jumpcool = 0
+
