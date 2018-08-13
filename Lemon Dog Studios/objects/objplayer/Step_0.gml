@@ -1,3 +1,4 @@
+
 //Movement
 if (keyboard_check(vk_left) or keyboard_check(ord("A"))) hspeed = -spd
 else if (keyboard_check(vk_right) or keyboard_check(ord("D"))) hspeed = spd
@@ -22,7 +23,6 @@ if !place_free(x + hspeed, y)
  if hspeed < 0 move_contact_solid(180,-hspeed)
  hspeed = 0
 }
-
 ///////
 if vspeed != 0
 if !place_free(x + hspeed, y + vspeed)
