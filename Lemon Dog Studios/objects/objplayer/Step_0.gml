@@ -7,18 +7,19 @@ else hspeed = 0;
 if (keyboard_check(vk_space) and gravity = 0) jump = true
 if jump = true
 {
-	jumppower++
+	jumppower+=1
 	if (jumppower < 25)jumppower = 25
 	if (jumppower > 100)jumppower = 100
 	if keyboard_check_released(vk_space)
 	{
 		vspeed = -jumppower/2
-		jumpcool++
-		if jumpcool >= jumppower
+		jumpcool+=1
+		if jumpcool >= 5
 		{
-			jump = false
 			jumpcool = 0
+			show_message(jumppower)
 			jumppower = 5
+			jump = false
 		}	
 	}
 }
