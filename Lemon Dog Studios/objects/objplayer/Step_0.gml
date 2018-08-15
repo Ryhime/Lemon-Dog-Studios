@@ -1,18 +1,25 @@
 
 //Movement
-if (keyboard_check(vk_left) or keyboard_check(ord("A"))) hspeed = -spd
-else if (keyboard_check(vk_right) or keyboard_check(ord("D"))) hspeed = spd
-else hspeed = 0
+if keyboard_check(vk_left) or keyboard_check(ord("A"))hspeed = -spd
+if keyboard_check(vk_right) or keyboard_check(ord("D"))hspeed = spd
+
 //Jumping
-if (keyboard_check_pressed(vk_space) and gravity = 0) jump = true
+if (keyboard_check(vk_space) and gravity = 0) jump = true
 if jump = true
 {
-	vspeed = -jumppower
-	jumpcool += 1
-	if jumpcool >= 25
+	jumppower++
+	if (jumppower < 25)jumppower = 25
+	if (jumppower > 100)jumppower = 100
+	if keyboard_check_released(vk_space)
 	{
-		jump = false
-		jumpcool = 0
+		vspeed = -jumppower/2
+		jumpcool++
+		if jumpcool >= jumppower
+		{
+			jump = false
+			jumpcool = 0
+			jumppower = 5
+		}	
 	}
 }
 //Collision With Solid
