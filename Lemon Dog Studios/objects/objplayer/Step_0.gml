@@ -1,8 +1,8 @@
 
 //Movement
 if keyboard_check(vk_left) or keyboard_check(ord("A"))hspeed = -spd
-if keyboard_check(vk_right) or keyboard_check(ord("D"))hspeed = spd
-
+else if keyboard_check(vk_right) or keyboard_check(ord("D"))hspeed = spd
+else hspeed = 0;
 //Jumping
 if (keyboard_check(vk_space) and gravity = 0) jump = true
 if jump = true
@@ -39,7 +39,7 @@ if !place_free(x + hspeed, y + vspeed)
  vspeed = 0
 }
 //Check for Gravity
-if (place_meeting(x,y - (vspeed - 1),objwall)) gravity = 0
+if (place_meeting(x,y - (vspeed - 25),objwall)) gravity = 0
 else gravity = .5
 //Charged the Overcharged
 if keyboard_check(vk_shift) and !charged
