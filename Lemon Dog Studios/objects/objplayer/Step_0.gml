@@ -4,24 +4,29 @@ if keyboard_check(vk_left) or keyboard_check(ord("A"))hspeed = -spd
 else if keyboard_check(vk_right) or keyboard_check(ord("D"))hspeed = spd
 else hspeed = 0;
 //Jumping
-if (keyboard_check(vk_space) and gravity = 0) jump = true
-if jump = true
+if keyboard_check(vk_space) and gravity = 0
 {
-	jumppower+=1
-	if (jumppower < 25)jumppower = 25
-	if (jumppower > 100)jumppower = 100
-	if keyboard_check_released(vk_space)
+	//Player Charging up Jump
+	jumpcharge++
+	show_debug_message(jumpcharge)
+	if jumpcharge >= 30
 	{
-		vspeed = -jumppower/2
-		jumpcool+=1
-		if jumpcool >= 5
-		{
-			jumpcool = 0
-			show_message(jumppower)
-			jumppower = 5
-			jump = false
-		}	
+		jumppower = 14
+		sprite_index = sprwall
 	}
+	else
+	{
+		jumppower = 7
+		sprite_index = sprplayeridle
+	}
+}
+//Actual Jump
+if keyboard_check_released(vk_space)
+{
+	vspeed = -jumppower
+	show_message(jumppower)
+	jumpcharge = 0
+	sprite_index = sprplayeridle
 }
 //Collision With Solid
 if hspeed != 0
@@ -42,33 +47,3 @@ if !place_free(x + hspeed, y + vspeed)
 //Check for Gravity
 if (place_meeting(x,y - (vspeed - 25),objwall)) gravity = 0
 else gravity = .5
-//Charged the Overcharged
-if keyboard_check(vk_shift) and !charged
-{
-	chargedcool++	
-}
-if chargedcool >= 50 and !charged 
-{
-	
-	charged = true
-	chargedcool = 0
-}
-//Charged Affects
-if charged
-{
-	sprite_index = sprwall
-	jumppower = 10
-	spd = 10
-	chargedcool++
-	if chargedcool >= 100
-	{
-		charged = false
-		chargedcool = 0
-	}
-}
-else if !charged
-{
-	sprite_index = sprplayeridle
-	jumppower = 5
-	spd = 5
-}

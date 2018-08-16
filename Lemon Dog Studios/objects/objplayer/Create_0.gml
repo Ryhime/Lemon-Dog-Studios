@@ -1,6 +1,7 @@
+//Jumping
+jumpcharge = 0
 jumppower = 0
-jump = false
-jumpcool = 0
+////////////////
 charged = false
 spd = 5
 chargedcool = 0
