@@ -1,8 +1,16 @@
-
 //Movement
-if keyboard_check(vk_left) or keyboard_check(ord("A"))hspeed = -spd
-else if keyboard_check(vk_right) or keyboard_check(ord("D"))hspeed = spd
-else hspeed = 0;
+if keyboard_check(vk_left) or keyboard_check(ord("A"))
+{
+	hspeed = -spd
+}
+else if keyboard_check(vk_right) or keyboard_check(ord("D"))
+{
+	hspeed = spd
+}
+else 
+{
+	hspeed = 0
+}
 //Jumping
 if keyboard_check(vk_space) and gravity = 0
 {
@@ -21,10 +29,9 @@ if keyboard_check(vk_space) and gravity = 0
 	}
 }
 //Actual Jump
-if keyboard_check_released(vk_space)
+if keyboard_check_released(vk_space) and gravity = 0
 {
 	vspeed = -jumppower
-	show_message(jumppower)
 	jumpcharge = 0
 	sprite_index = sprplayeridle
 }
@@ -47,3 +54,9 @@ if !place_free(x + hspeed, y + vspeed)
 //Check for Gravity
 if (place_meeting(x,y - (vspeed - 25),objwall)) gravity = 0
 else gravity = .5
+//Running
+if keyboard_check(vk_shift)
+{
+	spd = 10	
+}
+else spd = 5
