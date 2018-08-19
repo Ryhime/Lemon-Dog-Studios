@@ -60,3 +60,9 @@ if keyboard_check(vk_shift)
 	spd = 10	
 }
 else spd = 5
+//Crouching
+if keyboard_check(ord("S"))
+{
+	image_yscale = .5	
+}
+else image_yscale = 1
