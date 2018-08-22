@@ -12,16 +12,9 @@ else
 	hspeed = 0
 }
 //Jumping
-if keyboard_check(vk_space) and gravity = 0
-{
-	if not place_free(x,y+1)
-	{vspeed=-8}
-}
-if vspeed > 0
-{
-	jumppower = 0	
-}
-
+if(keyboard_check_pressed(vk_space))vspeed=-jumpspeed;
+//variable height
+if(keyboard_check_released(vk_space) and vspeed<0) vspeed*=0.5;
 //Collision With Solid
 if hspeed != 0
 if !place_free(x + hspeed, y)
