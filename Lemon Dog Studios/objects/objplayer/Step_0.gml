@@ -12,9 +12,9 @@ else
 	hspeed = 0
 }
 //Jumping
-if(keyboard_check_pressed(vk_space))vspeed=-jumpspeed;
+if(keyboard_check_pressed(vk_space) and gravity = 0)vspeed=-jumpspeed;
 //variable height
-if(keyboard_check_released(vk_space) and vspeed<0) vspeed*=0.5;
+if(keyboard_check_released(vk_space) and vspeed<0 and gravity = 0) vspeed*=0.5;
 //Collision With Solid
 if hspeed != 0
 if !place_free(x + hspeed, y)
@@ -40,9 +40,3 @@ if keyboard_check(vk_shift)
 	spd = 10	
 }
 else spd = 5
-//Crouching
-if keyboard_check(ord("S"))
-{
-	image_yscale = .5	
-}
-else image_yscale = 1
