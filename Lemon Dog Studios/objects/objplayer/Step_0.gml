@@ -14,27 +14,14 @@ else
 //Jumping
 if keyboard_check(vk_space) and gravity = 0
 {
-	//Player Charging up Jump
-	jumpcharge++
-	show_debug_message(jumpcharge)
-	if jumpcharge >= 30
-	{
-		jumppower = 14
-		sprite_index = sprwall
-	}
-	else
-	{
-		jumppower = 7
-		sprite_index = sprplayeridle
-	}
+	if not place_free(x,y+1)
+	{vspeed=-8}
 }
-//Actual Jump
-if keyboard_check_released(vk_space) and gravity = 0
+if vspeed > 0
 {
-	vspeed = -jumppower
-	jumpcharge = 0
-	sprite_index = sprplayeridle
+	jumppower = 0	
 }
+
 //Collision With Solid
 if hspeed != 0
 if !place_free(x + hspeed, y)
