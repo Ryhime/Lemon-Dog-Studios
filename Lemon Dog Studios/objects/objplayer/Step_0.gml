@@ -11,11 +11,14 @@ else
 {
 	hspeed = 0
 }
+//Jumping vars
+jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up)
+jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up)
 canjump--
 //Jumping
-if(keyboard_check_pressed(vk_space) and canjump > 0)vspeed=-jumpspeed;
+if(jumpbuttonpressed and canjump > 0)vspeed=-jumpspeed;
 //variable height
-if(keyboard_check_released(vk_space) and vspeed<0 and canjump > 0) vspeed*=0.5;
+if(jumpbuttonreleased and vspeed<0 and canjump > 0) vspeed*=0.5;
 //Collision With Solid
 if hspeed != 0
 if !place_free(x + hspeed, y)
@@ -36,7 +39,7 @@ if !place_free(x + hspeed, y + vspeed)
 if (place_meeting(x,y - (vspeed - 25),objwall)) 
 {
 	gravity = 0
-	canjump = 10
+	canjump = 5
 }
 else gravity = .5
 //Running
