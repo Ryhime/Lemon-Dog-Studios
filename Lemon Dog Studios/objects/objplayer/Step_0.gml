@@ -41,10 +41,15 @@ if (place_meeting(x,y - (vspeed - 25),objwall))
 	gravity = 0
 	canjump = 5
 }
-else gravity = 1.5
+else gravity = grv
 //Running
-if keyboard_check(vk_shift)
+if keyboard_check(vk_shift) and hspeed != 0 
 {
-	spd = 10	
+	if (spd < 10) spd ++
+	if (spd > 10) spd = 10
 }
-else spd = 5
+else
+{
+	if (spd	> 5) spd--
+	if (spd < 5) spd = 5
+}
