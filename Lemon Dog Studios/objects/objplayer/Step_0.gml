@@ -41,7 +41,7 @@ if (place_meeting(x,y - (vspeed - 25),objwall))
 	gravity = 0
 	canjump = 5
 }
-else gravity = .5
+else gravity = 1.5
 //Running
 if keyboard_check(vk_shift)
 {
