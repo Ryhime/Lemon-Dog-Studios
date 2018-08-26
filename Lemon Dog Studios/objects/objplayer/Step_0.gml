@@ -1,3 +1,4 @@
+sprite_index = sprplayeridle
 //Movement
 if keyboard_check(vk_left) or keyboard_check(ord("A"))
 {
@@ -52,4 +53,9 @@ else
 {
 	if (spd	> 5) spd--
 	if (spd < 5) spd = 5
+}
+//Crouching
+if keyboard_check(ord("S")) or keyboard_check(vk_down)
+{
+	sprite_index = sprplayercrouch
 }
