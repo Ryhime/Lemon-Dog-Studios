@@ -17,9 +17,9 @@ jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_release
 jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up)
 canjump--
 //Jumping
-if(jumpbuttonpressed and canjump > 0)vspeed=-jumpspeed;
+if(jumpbuttonpressed and canjump and maxjumps)vspeed=-jumpspeed;
 //variable height
-if(jumpbuttonreleased and vspeed<0 and canjump > 0) vspeed*=0.5;
+if(jumpbuttonreleased and vspeed<0 and canjump) vspeed*=.5;
 //Collision With Solid
 if hspeed != 0
 if !place_free(x + hspeed, y)
@@ -37,14 +37,29 @@ if !place_free(x + hspeed, y + vspeed)
  vspeed = 0
 }
 //Check for Gravity
-if (place_meeting(x,y - (vspeed - 25),objwall)) 
+gravity = scrgravity()
+if (scrgravity() == 0) canjump = 5
+
+//Crouching
+if keyboard_check(ord("S")) or keyboard_check(vk_down)
 {
-	gravity = 0
-	canjump = 5
+	sprite_index = sprplayercrouch
+	crouching = true
 }
-else gravity = grv
+else crouching = false
+//Change Values on for Crouching
+if crouching
+{
+	jumpspeed = 5
+	spd = 2.5
+}
+else if !crouching
+{
+	jumpspeed = 15
+	spd = 5
+}
 //Running
-if keyboard_check(vk_shift) and hspeed != 0 
+if keyboard_check(vk_shift) and hspeed != 0 and !crouching
 {
 	if (spd < 10) spd ++
 	if (spd > 10) spd = 10
@@ -54,10 +69,6 @@ else
 	if (spd	> 5) spd--
 	if (spd < 5) spd = 5
 }
-//Crouching
-if keyboard_check(ord("S")) or keyboard_check(vk_down)
-{
-	sprite_index = sprplayercrouch
-	crouching = true
-}
-else crouching = false
+//Reset Max Jumps
+if (scrgravity() == 0) maxjumps = 1
+else if (scrgravity() == 2) maxjumps = 0

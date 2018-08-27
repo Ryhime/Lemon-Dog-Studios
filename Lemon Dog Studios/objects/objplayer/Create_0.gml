@@ -4,5 +4,5 @@ window_set_caption("Arkangel")
 canjump = 0
 jumpbutton = false
 jumpbuttonpressed = false
-grv = 2
 crouching = false
+maxjumps = 1
