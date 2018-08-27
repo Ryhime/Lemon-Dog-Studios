@@ -58,4 +58,6 @@ else
 if keyboard_check(ord("S")) or keyboard_check(vk_down)
 {
 	sprite_index = sprplayercrouch
+	crouching = true
 }
+else crouching = false

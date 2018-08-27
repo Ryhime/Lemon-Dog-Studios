@@ -5,3 +5,4 @@ canjump = 0
 jumpbutton = false
 jumpbuttonpressed = false
 grv = 2
+crouching = false
