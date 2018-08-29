@@ -72,3 +72,7 @@ else
 //Reset Max Jumps
 if (scrgravity() == 0) maxjumps = 1
 else if (scrgravity() == 2) maxjumps = 0
+//Sliding
+
+
+
