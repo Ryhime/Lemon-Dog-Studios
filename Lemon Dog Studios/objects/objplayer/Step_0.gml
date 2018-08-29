@@ -36,10 +36,6 @@ if !place_free(x + hspeed, y + vspeed)
  if vspeed < 0 move_contact_solid(90,-vspeed)
  vspeed = 0
 }
-//Check for Gravity
-gravity = scrgravity()
-if (scrgravity() == 0) canjump = 5
-
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down)
 {
@@ -50,8 +46,8 @@ else crouching = false
 //Change Values on for Crouching
 if crouching
 {
-	jumpspeed = 5
-	spd = 2.5
+	jumpspeed = 0
+	spd = 1
 }
 else if !crouching
 {
@@ -59,9 +55,10 @@ else if !crouching
 	spd = 5
 }
 //Running
-if keyboard_check(vk_shift) and hspeed != 0 and !crouching
+if keyboard_check(vk_shift)
 {
-	if (spd < 10) spd ++
+	show_debug_message("Dashing")
+	if (spd < 10) spd += 1
 	if (spd > 10) spd = 10
 }
 else
@@ -69,10 +66,10 @@ else
 	if (spd	> 5) spd--
 	if (spd < 5) spd = 5
 }
-//Reset Max Jumps
-if (scrgravity() == 0) maxjumps = 1
-else if (scrgravity() == 2) maxjumps = 0
-//Sliding
-
+show_debug_message(hspeed)
+	gravity = scrgravity()
+	if (scrgravity() == 0) canjump = 5
+	if (scrgravity() == 0) maxjumps = 1
+	else if (scrgravity() == 2) maxjumps = 0
 
 
