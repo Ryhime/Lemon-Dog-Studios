@@ -55,6 +55,14 @@
             }
         },
         {
+            "Key": "3d1d2be4-a9e6-4834-b44d-d5f9a235a337",
+            "Value": {
+                "id": "d16568f7-f885-40fe-bead-eaa6d90d06ff",
+                "resourcePath": "scripts\\scrgravitydetection\\scrgravitydetection.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3d81b8ea-0c96-4de4-ad84-22545640060c",
             "Value": {
                 "id": "6e4e42bd-5482-4f30-8778-d4818f5782e4",
@@ -232,7 +240,8 @@
         }
     ],
     "script_order": [
-        "8dee1563-75b6-4e86-9382-e09f0406f504"
+        "8dee1563-75b6-4e86-9382-e09f0406f504",
+        "3d1d2be4-a9e6-4834-b44d-d5f9a235a337"
     ],
     "tutorial": ""
 }
