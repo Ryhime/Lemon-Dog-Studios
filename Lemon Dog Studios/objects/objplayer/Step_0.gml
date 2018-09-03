@@ -26,10 +26,11 @@ else if !crouching
 	spd = 5
 }
 //Running
-if keyboard_check_direct(vk_shift) and !crouching
+if keyboard_check(vk_shift) and !crouching
 {
 	show_debug_message("Dashing")
 	spd = 10
+	
 }
 else if !crouching
 {
@@ -54,6 +55,33 @@ else if keyboard_check(vk_right) or keyboard_check_direct(ord("D"))
 else 
 {
 	hspeed = 0
+}
+//Double Input
+if keyboard_check_pressed(ord("D")) or keyboard_check_pressed(ord("A")) and !dashing
+{
+	dashcool = 10	
+}
+if (dashcool > 0) dashcool--
+if dashcool > 1 and dashcool < 9 and keyboard_check_pressed(ord("A")) and !dashing
+{
+	dashdirection = "left"
+	dashing = true
+}
+else if dashcool > 1 and dashcool < 9 and keyboard_check_pressed(ord("D")) and !dashing
+{
+	dashdirection = "right"
+	dashing = true
+}
+if dashing
+{
+	if dashdirection = "left"
+	{
+		hspeed = -12
+	}
+	if dashdirection = "right"
+	{
+		hspeed = 12
+	}
 }
 //Collision With Solid
 if hspeed != 0

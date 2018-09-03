@@ -6,3 +6,7 @@ jumpbutton = false
 jumpbuttonpressed = false
 crouching = false
 maxjumps = 1
+//Shoulder Dash
+dashing = false
+dashdirection = 0
+dashcool = 0
