@@ -215,6 +215,14 @@
             }
         },
         {
+            "Key": "df4f88e0-9098-4404-b3d4-4d93b0e5235a",
+            "Value": {
+                "id": "109d16d6-e0c1-43a6-8ca8-0ea82f49675b",
+                "resourcePath": "scripts\\scrcollision\\scrcollision.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f2e410d6-027e-45ea-a47a-3a166b505b41",
             "Value": {
                 "id": "aabac939-7060-43f6-acbf-9dc2e6bcfc4c",
@@ -232,7 +240,8 @@
         }
     ],
     "script_order": [
-        "8dee1563-75b6-4e86-9382-e09f0406f504"
+        "8dee1563-75b6-4e86-9382-e09f0406f504",
+        "df4f88e0-9098-4404-b3d4-4d93b0e5235a"
     ],
     "tutorial": ""
 }

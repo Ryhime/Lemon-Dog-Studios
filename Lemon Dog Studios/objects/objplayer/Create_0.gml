@@ -8,3 +8,7 @@ crouching = false
 maxjumps = 1
 //Shoulder Dash
 dashing = false
+//Sliding
+sliding = false
+slidingdirection = 0
+slidecool = 0

@@ -25,17 +25,29 @@ else if !crouching
 	jumpspeed = 15
 	spd = 5
 }
-//Running
-if keyboard_check(vk_shift) and !crouching
+//Running and Start of Slide
+if keyboard_check(vk_shift)
 {
-	show_debug_message("Dashing")
-	spd = 10
-	dashing = true
-	
+	if crouching and hspeed != 0 and !sliding
+	{
+		sliding = true
+		if hspeed > 0
+		{
+			slidingdirection = "right"
+		}
+		else if hspeed < 0
+		{
+			slidingdirection = "left"	
+		}
+	}
+	else if !crouching and !sliding
+	{
+		dashing = true
+		spd = 10
+	}
 }
-else if !crouching
+else
 {
-	show_debug_message("Stopped")
 	if (spd	> 5) spd--
 	if (spd < 5) spd = 5
 	dashing = false
@@ -58,21 +70,23 @@ else
 {
 	hspeed = 0
 }
-//Collision With Solid
-if hspeed != 0
-if !place_free(x + hspeed, y)
+//Actual Slide
+if sliding
 {
- if hspeed > 0 move_contact_solid(0,hspeed)
- if hspeed < 0 move_contact_solid(180,-hspeed)
- hspeed = 0
+	slidecool++
+	if slidecool<=100
+	{
+		sliding = false	
+		slidecool = 0
+	}
+	if slidingdirection = "left"
+	{
+		hspeed = -15	
+	}
+	else if slidingdirection = "right"
+	{
+		hspeed = 15	
+	}
 }
-///////
-if vspeed != 0
-if !place_free(x + hspeed, y + vspeed)
-{
- if vspeed > 0 move_contact_solid(270,vspeed)
- if vspeed < 0 move_contact_solid(90,-vspeed)
- vspeed = 0
-}
-
-
+//Collision
+scrcollision()
