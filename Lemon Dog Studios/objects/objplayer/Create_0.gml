@@ -13,3 +13,4 @@ sliding = false
 slidingdirection = 0
 slidecool = 0
 betweenslidecool = 0
+controller = -1
