@@ -215,6 +215,14 @@
             }
         },
         {
+            "Key": "d8699caf-4cf7-4573-995f-ee6caa0323a1",
+            "Value": {
+                "id": "e552b884-00b9-4861-a64d-aefa1a291eb7",
+                "resourcePath": "sprites\\sprplayerslide\\sprplayerslide.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "df4f88e0-9098-4404-b3d4-4d93b0e5235a",
             "Value": {
                 "id": "109d16d6-e0c1-43a6-8ca8-0ea82f49675b",

@@ -1,4 +1,3 @@
-sprite_index = sprplayeridle
 //Jumping vars
 jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up)
 jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up)
@@ -10,7 +9,6 @@ if(jumpbuttonreleased and vspeed<0 and canjump) vspeed*=.5;
 //Crouching
 if keyboard_check_direct(ord("S")) or keyboard_check_direct(vk_down)
 {
-	sprite_index = sprplayercrouch
 	crouching = true
 }
 else crouching = false
@@ -28,7 +26,7 @@ else if !crouching
 //Running and Start of Slide
 if keyboard_check(vk_shift)
 {
-	if crouching and hspeed != 0 and !sliding
+	if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")) and hspeed != 0 and !sliding and betweenslidecool >= 20
 	{
 		sliding = true
 		if hspeed > 0
@@ -48,8 +46,11 @@ if keyboard_check(vk_shift)
 }
 else
 {
-	if (spd	> 5) spd--
-	if (spd < 5) spd = 5
+	if !crouching
+	{
+		if (spd	> 5) spd--
+		if (spd < 5) spd = 5	
+	}
 	dashing = false
 }
 show_debug_message(spd)
@@ -74,7 +75,7 @@ else
 if sliding
 {
 	slidecool++
-	if slidecool<=100
+	if slidecool>=10
 	{
 		sliding = false	
 		slidecool = 0
@@ -88,5 +89,14 @@ if sliding
 		hspeed = 15	
 	}
 }
+//Sliding Speed
+if (crouching) spd = 2
+//In Between Slides
+if (sliding) betweenslidecool = 0
+else betweenslidecool++
+//Sprite Index
+if (sliding) sprite_index = sprplayerslide
+else if (crouching) sprite_index = sprplayercrouch
+else sprite_index = sprplayeridle
 //Collision
 scrcollision()

@@ -12,3 +12,4 @@ dashing = false
 sliding = false
 slidingdirection = 0
 slidecool = 0
+betweenslidecool = 0
