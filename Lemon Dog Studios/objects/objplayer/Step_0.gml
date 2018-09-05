@@ -1,14 +1,13 @@
-
 //Jumping vars
-jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up)
-jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up)
+jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up) or gamepad_button_check_released(4,gp_face1) or gamepad_button_check_released(0,gp_face1)
+jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up) or gamepad_button_check_pressed(4,gp_face1) or gamepad_button_check_pressed(0,gp_face1)
 canjump--
 //Jumping
 if(jumpbuttonpressed and canjump and maxjumps)vspeed=-jumpspeed;
 //variable height
 if(jumpbuttonreleased and vspeed<0 and canjump) vspeed*=.5;
 //Crouching
-if keyboard_check_direct(ord("S")) or keyboard_check_direct(vk_down)
+if keyboard_check_direct(ord("S")) or keyboard_check_direct(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
 	crouching = true
 }
@@ -25,9 +24,9 @@ else if !crouching
 	spd = 5
 }
 //Running and Start of Slide
-if keyboard_check(vk_shift)
+if keyboard_check(vk_shift) or gamepad_button_check(0,gp_face3) or gamepad_button_check(4,gp_face3)
 {
-	if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")) and hspeed != 0 and !sliding and betweenslidecool >= 20
+	if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")) or gamepad_button_check_pressed(0,gp_shoulderlb) or gamepad_button_check_pressed(4,gp_shoulderlb) and hspeed != 0 and !sliding and betweenslidecool >= 10 and place_meeting(x,y+1,objwall)
 	{
 		sliding = true
 		if hspeed > 0
@@ -60,11 +59,11 @@ if (scrgravity() == 0) canjump = 5
 if (scrgravity() == 0) maxjumps = 1
 else if (scrgravity() == 2) maxjumps = 0
 //Movement
-if keyboard_check_direct(vk_left) or keyboard_check_direct(ord("A"))
+if keyboard_check_direct(vk_left) or keyboard_check_direct(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
 {
 	hspeed = -spd
 }
-else if keyboard_check(vk_right) or keyboard_check_direct(ord("D"))
+else if keyboard_check(vk_right) or keyboard_check_direct(ord("D")) or gamepad_axis_value(0,gp_axislh) > 0 or gamepad_axis_value(4,gp_axislh) > 0
 {
 	hspeed = spd
 }
