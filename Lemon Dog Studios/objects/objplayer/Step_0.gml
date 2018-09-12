@@ -11,7 +11,10 @@ if keyboard_check_direct(ord("S")) or keyboard_check_direct(vk_down) or gamepad_
 {
 	crouching = true
 }
-else crouching = false
+else if place_free(x,y - 30)
+{
+	crouching = false
+}
 //Change Values on for Crouching
 if crouching
 {
