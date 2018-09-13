@@ -271,6 +271,22 @@
             }
         },
         {
+            "Key": "f12d57d0-966a-47c4-ae5d-0af151e917be",
+            "Value": {
+                "id": "ea5a92d2-3d34-479d-be47-07dc2bf2298f",
+                "resourcePath": "sprites\\sprnone\\sprnone.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "f225b58e-f974-455c-a669-3afa7d9d2de4",
+            "Value": {
+                "id": "563835f2-bf3b-436d-96d2-76b79baa22db",
+                "resourcePath": "sprites\\sprdisplatform\\sprdisplatform.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f2e410d6-027e-45ea-a47a-3a166b505b41",
             "Value": {
                 "id": "aabac939-7060-43f6-acbf-9dc2e6bcfc4c",
