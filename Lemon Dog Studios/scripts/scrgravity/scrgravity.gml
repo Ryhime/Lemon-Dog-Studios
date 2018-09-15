@@ -1,4 +1,3 @@
-
 if (place_meeting(x,y - (vspeed - 50),objwall)) 
 {
 	return 0

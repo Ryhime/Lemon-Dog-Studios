@@ -95,6 +95,14 @@
             }
         },
         {
+            "Key": "5863e43d-0663-4bdd-b973-2b6a3e31abba",
+            "Value": {
+                "id": "aadb4f61-53ad-4470-8c74-fb592fdf9511",
+                "resourcePath": "objects\\objfollow3\\objfollow3.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "79d032d0-f2e0-4771-99b9-2d52b26ec126",
             "Value": {
                 "id": "eab807af-8ed6-4b41-90b3-96daed1ca827",
@@ -215,6 +223,14 @@
             }
         },
         {
+            "Key": "bd664893-681b-4106-8769-c328b73a61c8",
+            "Value": {
+                "id": "4ff603a6-badd-444a-b7c6-9134622d53e9",
+                "resourcePath": "views\\bd664893-681b-4106-8769-c328b73a61c8.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "c3d58295-cddd-480f-a94b-a53d2d08ee7e",
             "Value": {
                 "id": "cb85fe35-d734-4a43-8d64-cf6074b14d61",
@@ -271,6 +287,22 @@
             }
         },
         {
+            "Key": "e1264221-3ede-40c9-8a48-acce02e9a035",
+            "Value": {
+                "id": "84aa7764-3fb1-41b5-95c8-8e3c10bf97e3",
+                "resourcePath": "objects\\objfollow2\\objfollow2.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e90c0b28-0d1a-4b01-ad30-81f5cd7ffc7c",
+            "Value": {
+                "id": "1d8d1d60-eddd-4a65-a12f-a67061c6c98c",
+                "resourcePath": "objects\\objfollow1\\objfollow1.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f12d57d0-966a-47c4-ae5d-0af151e917be",
             "Value": {
                 "id": "ea5a92d2-3d34-479d-be47-07dc2bf2298f",
@@ -295,6 +327,14 @@
             }
         },
         {
+            "Key": "f552e009-30a2-4419-a66d-d5361a6ba425",
+            "Value": {
+                "id": "348ee257-6aa1-429b-bf0c-747c753a3231",
+                "resourcePath": "scripts\\scrfollowerers\\scrfollowerers.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f918677d-9bf6-494b-a398-14b752653269",
             "Value": {
                 "id": "91b902f9-b94e-496b-9c37-7d0f4365fcbb",
@@ -305,7 +345,8 @@
     ],
     "script_order": [
         "8dee1563-75b6-4e86-9382-e09f0406f504",
-        "df4f88e0-9098-4404-b3d4-4d93b0e5235a"
+        "df4f88e0-9098-4404-b3d4-4d93b0e5235a",
+        "f552e009-30a2-4419-a66d-d5361a6ba425"
     ],
     "tutorial": ""
 }
