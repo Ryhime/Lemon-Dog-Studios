@@ -1,4 +1,5 @@
-//Jumping vars
+
+	//Jumping vars
 jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up) or gamepad_button_check_released(4,gp_face1) or gamepad_button_check_released(0,gp_face1)
 jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up) or gamepad_button_check_pressed(4,gp_face1) or gamepad_button_check_pressed(0,gp_face1)
 canjump--
@@ -62,7 +63,9 @@ if (scrgravity() == 0) canjump = 5
 if (scrgravity() == 0) maxjumps = 1
 else if (scrgravity() == 2) maxjumps = 0
 //Movement
-if keyboard_check_direct(vk_left) or keyboard_check_direct(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
+if distance_to_object(objplayer) > 100
+{
+	if keyboard_check_direct(vk_left) or keyboard_check_direct(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
 {
 	hspeed = -spd
 }
@@ -73,6 +76,7 @@ else if keyboard_check(vk_right) or keyboard_check_direct(ord("D")) or gamepad_a
 else 
 {
 	hspeed = 0
+}	
 }
 //Actual Slide
 if sliding
@@ -102,4 +106,4 @@ if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
 //Collision
-scrcollision()
+scrcollision()	
