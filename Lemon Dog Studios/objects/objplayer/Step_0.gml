@@ -1,4 +1,5 @@
-//Jumping vars
+
+	//Jumping vars
 jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up) or gamepad_button_check_released(4,gp_face1) or gamepad_button_check_released(0,gp_face1)
 jumpbuttonpressed = keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("W")) or keyboard_check_pressed(vk_up) or gamepad_button_check_pressed(4,gp_face1) or gamepad_button_check_pressed(0,gp_face1)
 canjump--
@@ -97,9 +98,14 @@ if (crouching) spd = 2
 //In Between Slides
 if (sliding) betweenslidecool = 0
 else betweenslidecool++
+if place_meeting(x,y,objrope)
+{
+	y -= 10	
+}
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
 //Collision
-scrcollision()
+scrcollision()	
+

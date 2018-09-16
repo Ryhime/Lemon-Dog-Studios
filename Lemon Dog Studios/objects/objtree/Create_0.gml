@@ -1,0 +1,2 @@
+getbox = false
+rope = false
