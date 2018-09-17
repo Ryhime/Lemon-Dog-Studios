@@ -8,7 +8,7 @@ if(jumpbuttonpressed and canjump and maxjumps)vspeed=-jumpspeed;
 //variable height
 if(jumpbuttonreleased and vspeed<0 and canjump) vspeed*=.5;
 //Crouching
-if keyboard_check_direct(ord("S")) or keyboard_check_direct(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
+if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
 	crouching = true
 }
@@ -57,17 +57,16 @@ else
 	}
 	dashing = false
 }
-show_debug_message(spd)
 gravity = scrgravity()
 if (scrgravity() == 0) canjump = 5
 if (scrgravity() == 0) maxjumps = 1
 else if (scrgravity() == 2) maxjumps = 0
 //Movement
-if keyboard_check_direct(vk_left) or keyboard_check_direct(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
+if keyboard_check(vk_left) or keyboard_check(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
 {
 	hspeed = -spd
 }
-else if keyboard_check(vk_right) or keyboard_check_direct(ord("D")) or gamepad_axis_value(0,gp_axislh) > 0 or gamepad_axis_value(4,gp_axislh) > 0
+else if keyboard_check(vk_right) or keyboard_check(ord("D")) or gamepad_axis_value(0,gp_axislh) > 0 or gamepad_axis_value(4,gp_axislh) > 0
 {
 	hspeed = spd
 }
