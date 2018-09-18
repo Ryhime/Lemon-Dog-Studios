@@ -1,11 +1,12 @@
 spd = 5
-jumpspeed = 15
+jumpspeed = 150
 window_set_caption("Arkangel")
 canjump = 0
 jumpbutton = false
 jumpbuttonpressed = false
 crouching = false
 maxjumps = 1
+jumping = false
 //Shoulder Dash
 dashing = false
 //Sliding
@@ -20,3 +21,4 @@ gamepad_set_axis_deadzone(0,deadzone)
 //Hspeed/Vspeed Subs
 hsp = 0
 vsp = 0
+phy_fixed_rotation = true
