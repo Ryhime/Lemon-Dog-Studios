@@ -1,5 +1,5 @@
 spd = 5
-jumpspeed = 20
+jumpspeed = 15
 window_set_caption("Arkangel")
 canjump = 0
 jumpbutton = false
@@ -17,3 +17,6 @@ betweenslidecool = 0
 deadzone = .1
 gamepad_set_axis_deadzone(4,deadzone)
 gamepad_set_axis_deadzone(0,deadzone)
+//Hspeed/Vspeed Subs
+hsp = 0
+vsp = 0
