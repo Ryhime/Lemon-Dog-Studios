@@ -2,7 +2,7 @@
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
-	crouching = true
+	if (scrgravity() = 0) crouching = true
 }
 else if place_free(x,y - 30)
 {
@@ -22,16 +22,19 @@ else if !crouching
 //Running and Start of Slide
 if keyboard_check(vk_shift) or gamepad_button_check(0,gp_face3) or gamepad_button_check(4,gp_face3)
 {
-	if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")) or gamepad_button_check_pressed(0,gp_shoulderlb) or gamepad_button_check_pressed(4,gp_shoulderlb) and hspeed != 0 and !sliding and betweenslidecool >= 10 and place_meeting(x,y+1,objwall)
+	if keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S")) or gamepad_button_check_pressed(0,gp_shoulderlb) or gamepad_button_check_pressed(4,gp_shoulderlb) and !sliding and betweenslidecool >= 10
 	{
-		sliding = true
-		if hsp > 0
+		if scrgravity() = 0 and (hsp > 0 or hsp < 0)  
 		{
-			slidingdirection = "right"
-		}
-		else if hsp < 0
-		{
-			slidingdirection = "left"	
+			sliding = true
+			if hsp > 0
+			{
+				slidingdirection = "right"
+			}
+			else if hsp < 0
+			{
+				slidingdirection = "left"	
+			}	
 		}
 	}
 	else if !crouching and !sliding
@@ -63,6 +66,7 @@ else if keyboard_check(vk_right) or keyboard_check(ord("D")) or gamepad_axis_val
 	phy_position_x += spd
 	hsp = spd
 }
+else hsp = 0
 //Actual Slide
 if sliding
 {
@@ -82,32 +86,39 @@ if sliding
 		phy_position_x+= 15	
 		hsp = 15
 	}
+	else hsp = 0
 }
 //Sliding Speed
 if (crouching) spd = 2
 //In Between Slides
 if (sliding) betweenslidecool = 0
 else betweenslidecool++
-if place_meeting(x,y,objrope)
+if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axislv) > 0 or gamepad_axis_value(4,gp_axislv) or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
+	physics_world_gravity(0,0)
 	phy_position_y -= 10
 	vsp = -10
 }
+else 
+{
+	physics_world_gravity(0,100)
+	vsp = 0
+}
 //Jumping vars
-jumpbuttonreleased = keyboard_check_released(vk_space) or keyboard_check_released(ord("W")) or keyboard_check_released(vk_up) or gamepad_button_check_released(4,gp_face1) or gamepad_button_check_released(0,gp_face1)
 jumpbuttonpressed = keyboard_check(vk_space) or keyboard_check(ord("W")) or keyboard_check(vk_up) or gamepad_button_check(4,gp_face1) or gamepad_button_check(0,gp_face1)
 canjump--
 //Jumping
-if(jumpbuttonpressed and canjump and maxjumps)
+if(jumpbuttonpressed and canjump and maxjumps and !place_meeting(x,y,objrope))
 {
 	physics_apply_impulse(phy_position_x,phy_position_y,0,-500)
 	jumping = true
-	show_debug_message("Jump")
 }
+else
+{
+	jumping = false
+}	
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
-
-
-
+show_debug_message(hsp)
