@@ -1,6 +1,8 @@
-if objplayer.x > x + 100
+if objplayer.x > x + 100 and created = false
 {
-	sprite_index = sprtreefell	
+	created = true
+	instance_create_layer(550,560,layer,objwall)
+	instance_create_layer(600,560,layer,objwall)
 }
 if getbox and distance_to_object(objplayer) < 50 and !rope
 {
