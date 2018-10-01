@@ -1,3 +1,4 @@
+
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
@@ -57,12 +58,10 @@ else if (scrgravity() == 2) maxjumps = 0
 //Movement
 if keyboard_check(vk_left) or keyboard_check(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
 {
-	phy_position_x -= spd
 	hsp = -spd
 }
 else if keyboard_check(vk_right) or keyboard_check(ord("D")) or gamepad_axis_value(0,gp_axislh) > 0 or gamepad_axis_value(4,gp_axislh) > 0
 {
-	phy_position_x += spd
 	hsp = spd
 }
 else hsp = 0
@@ -108,7 +107,6 @@ else betweenslidecool++
 if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axisrv) < 0 or gamepad_axis_value(4,gp_axisrv) < 0 or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
 	physics_world_gravity(0,0)
-	phy_position_y -= 10
 	vsp = -10
 }
 else 
@@ -116,6 +114,8 @@ else
 	physics_world_gravity(0,100)
 	vsp = 0
 }
+phy_position_x += hsp
+phy_position_y += vsp 
 
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
