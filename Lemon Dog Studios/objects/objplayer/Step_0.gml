@@ -1,4 +1,3 @@
-
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
@@ -16,7 +15,7 @@ if crouching
 }
 else if !crouching
 {
-	jumpspeed = 15
+	jumpspeed = 1
 	spd = 5
 }
 //Running and Start of Slide
@@ -76,12 +75,10 @@ if sliding
 	}
 	if slidingdirection = "left"
 	{
-		phy_position_x-=15
 		hsp = -15
 	}
 	else if slidingdirection = "right"
 	{
-		phy_position_x+= 15	
 		hsp = 15
 	}
 	else hsp = 0
@@ -92,7 +89,7 @@ canjump--
 //Jumping
 if(jumpbuttonpressed and canjump and maxjumps)
 {
-	physics_apply_impulse(phy_position_x,phy_position_y,0,-500)
+	physics_apply_impulse(x,y-1,0,-1000*jumpspeed)
 	jumping = true
 }
 else
@@ -106,19 +103,17 @@ if (sliding) betweenslidecool = 0
 else betweenslidecool++
 if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axisrv) < 0 or gamepad_axis_value(4,gp_axisrv) < 0 or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
-	physics_world_gravity(0,0)
 	vsp = -10
+	physics_world_gravity(0,0)
 }
 else 
 {
-	physics_world_gravity(0,100)
 	vsp = 0
+	physics_world_gravity(0,100)
 }
 phy_position_x += hsp
-phy_position_y += vsp 
-
+phy_position_y += vsp
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
-show_debug_message(maxjumps)
