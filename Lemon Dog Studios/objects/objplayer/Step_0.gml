@@ -111,7 +111,7 @@ else
 	vsp = 0
 	physics_world_gravity(0,100)
 }
-phy_position_x += hsp
+if (place_free(x+hsp,y)) phy_position_x += hsp
 phy_position_y += vsp
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
