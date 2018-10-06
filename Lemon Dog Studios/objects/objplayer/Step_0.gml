@@ -1,3 +1,4 @@
+if (x>1000) room_goto(rsavetest)
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
