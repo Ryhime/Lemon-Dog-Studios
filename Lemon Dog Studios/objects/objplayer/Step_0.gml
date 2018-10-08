@@ -90,7 +90,7 @@ canjump--
 //Jumping
 if(jumpbuttonpressed and canjump and maxjumps)
 {
-	physics_apply_impulse(0,0,0,-1000)
+	physics_apply_impulse(0,0,0,-2000)
 	jumping = true
 }
 else
@@ -105,12 +105,12 @@ else betweenslidecool++
 if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axisrv) < 0 or gamepad_axis_value(4,gp_axisrv) < 0 or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
 	vsp = -10
-	physics_world_gravity(0,0)
+	physics_fixture_set_density(fixture,0)
 }
 else 
 {
 	vsp = 0
-	physics_world_gravity(0,100)
+	physics_fixture_set_density(fixture,.5)
 }
 //Collision
 if !dashing
@@ -128,3 +128,4 @@ phy_position_y += vsp
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
+show_debug_message(physics_get_density(fixture))
