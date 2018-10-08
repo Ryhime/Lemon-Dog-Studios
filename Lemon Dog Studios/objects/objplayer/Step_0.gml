@@ -1,4 +1,4 @@
-if (x>1000) room_goto(rsavetest)
+
 //Crouching
 if keyboard_check(ord("S")) or keyboard_check(vk_down) or gamepad_button_check(4,gp_shoulderlb) or gamepad_button_check(0,gp_shoulderlb)
 {
@@ -90,7 +90,7 @@ canjump--
 //Jumping
 if(jumpbuttonpressed and canjump and maxjumps)
 {
-	physics_apply_impulse(x,y-1,0,-1000*jumpspeed)
+	physics_apply_impulse(0,0,0,-1000)
 	jumping = true
 }
 else
