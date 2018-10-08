@@ -19,14 +19,15 @@ deadzone = .1
 gamepad_set_axis_deadzone(4,deadzone)
 gamepad_set_axis_deadzone(0,deadzone)
 //Create Fixture
-fixture = physics_fixture_create()
-physics_fixture_set_box_shape(fixture,16,32)
-physics_fixture_set_density(fixture, 0.5);
-physics_fixture_set_restitution(fixture, 0);
-physics_fixture_set_linear_damping(fixture, 0);
-physics_fixture_set_angular_damping(fixture, 0);
-physics_fixture_set_friction(fixture, 0);
-physics_fixture_bind(fixture, id);
+fix = physics_fixture_create()
+physics_fixture_set_box_shape(fix,16,32)
+physics_fixture_set_density(fix, 0.5);
+physics_fixture_set_restitution(fix, 0);
+physics_fixture_set_linear_damping(fix, 0);
+physics_fixture_set_angular_damping(fix, 0);
+physics_fixture_set_friction(fix, 0);
+fixture = physics_fixture_bind(fix, id);
+physics_fixture_delete(fix)
 //Hspeed/Vspeed Subs
 hsp = 0
 vsp = 0

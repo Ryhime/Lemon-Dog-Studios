@@ -105,12 +105,12 @@ else betweenslidecool++
 if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axisrv) < 0 or gamepad_axis_value(4,gp_axisrv) < 0 or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
 	vsp = -10
-	physics_fixture_set_density(fixture,0)
+	physics_set_density(fixture,0)
 }
 else 
 {
 	vsp = 0
-	physics_fixture_set_density(fixture,.5)
+	physics_set_density(fixture,.5)
 }
 //Collision
 if !dashing
