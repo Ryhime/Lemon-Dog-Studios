@@ -104,13 +104,13 @@ if (sliding) betweenslidecool = 0
 else betweenslidecool++
 if place_meeting(x,y,objrope) and (keyboard_check(vk_up) or keyboard_check(ord("W")) or gamepad_axis_value(0,gp_axisrv) < 0 or gamepad_axis_value(4,gp_axisrv) < 0 or gamepad_button_check(0,gp_padu) or gamepad_button_check(4,gp_padu))
 {
-	vsp = -10
-	physics_set_density(fixture,0)
+	physics_world_gravity(0,-flipgrav)
+	flipgrav -= 3.5
 }
 else 
 {
-	vsp = 0
-	physics_set_density(fixture,.5)
+	physics_world_gravity(0,100)
+	flipgrav = 100
 }
 //Collision
 if !dashing
@@ -128,4 +128,3 @@ phy_position_y += vsp
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
-show_debug_message(physics_get_density(fixture))

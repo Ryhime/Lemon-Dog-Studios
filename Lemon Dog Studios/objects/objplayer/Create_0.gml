@@ -14,6 +14,9 @@ sliding = false
 slidingdirection = 0
 slidecool = 0
 betweenslidecool = 0
+/////////////////
+flipgrav = 100
+subflipgrav = 0
 //Controller Deadzone
 deadzone = .1
 gamepad_set_axis_deadzone(4,deadzone)
