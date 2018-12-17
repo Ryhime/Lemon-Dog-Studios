@@ -4,7 +4,26 @@
     "mvc": "1.0",
     "name": "objcrystal",
     "eventList": [
-        
+        {
+            "id": "867df9fa-f013-4d21-b060-d45f867b9753",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "39ef8dae-b58a-41bf-9257-8d722b93be02"
+        },
+        {
+            "id": "b739398d-d4bb-4ae1-ac0e-3db2a3331f15",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 3,
+            "m_owner": "39ef8dae-b58a-41bf-9257-8d722b93be02"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,

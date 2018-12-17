@@ -109,4 +109,3 @@ else betweenslidecool++
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
-show_debug_message(maxjumps)

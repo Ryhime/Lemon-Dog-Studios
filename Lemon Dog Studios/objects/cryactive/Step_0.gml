@@ -15,5 +15,5 @@ if created = true and counter >= 100
 }
 if created = true
 {
-	counter = counter + 1
+	counter++
 }
