@@ -51,9 +51,7 @@ else
 	}
 	dashing = false
 }
-if (scrgravity() == 0) canjump = 10
-if (scrgravity() == 0) maxjumps = 1
-else if (scrgravity() == 2) maxjumps = 0
+if (scrgravity() == 0) canjump = canjumpset
 //Movement
 if keyboard_check(vk_left) or keyboard_check(ord("A")) or gamepad_axis_value(0,gp_axislh) < 0 or gamepad_axis_value(4,gp_axislh) < 0
 {
@@ -91,15 +89,16 @@ if sliding
 jumpbuttonpressed = keyboard_check(vk_space) or keyboard_check(vk_up) or gamepad_button_check(4,gp_face1) or gamepad_button_check(0,gp_face1)
 canjump--
 //Jumping
-if(jumpbuttonpressed and canjump and maxjumps)
+if(jumpbuttonpressed and canjump and !jumping)
 {
 	physics_apply_impulse(phy_position_x,phy_position_y,0,-500)
 	jumping = true
 }
-else
+else if (scrgravity == 0)
 {
 	jumping = false
 }	
+if (jumping) canjump = 0
 //Sliding Speed
 if (crouching) spd = 2
 //In Between Slides
@@ -109,3 +108,4 @@ else betweenslidecool++
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
+show_debug_message(canjump)

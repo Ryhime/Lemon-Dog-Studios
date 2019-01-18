@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "0acf8c45-361a-437a-b943-6d5ef1a3c6e2",
+            "Value": {
+                "id": "6508d47c-42b3-4b0b-9119-a5e54c72dbc2",
+                "resourcePath": "views\\0acf8c45-361a-437a-b943-6d5ef1a3c6e2.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "2dc0cfda-85c9-43b2-926d-c81ab5ea8550",
             "Value": {
                 "id": "a502a7c4-925f-4e40-ba07-dbdd4faa177c",
@@ -116,6 +124,30 @@
                 "id": "7615f1db-86e5-4554-b011-7b3bdc2faf20",
                 "resourcePath": "objects\/objwall\/objwall.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "586ffc11-5fe0-4165-a176-d99d7d4abe31",
+            "Value": {
+                "id": "a29b67b1-e373-408e-849b-cb182c22018d",
+                "resourcePath": "objects\\objcrystalunactiveslanted\\objcrystalunactiveslanted.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "6b79a4ca-20f0-4e8c-9b81-3d8f1c4e6080",
+            "Value": {
+                "id": "79b02108-1cf8-4537-80c4-c3fffbb62b88",
+                "resourcePath": "objects\\objcrystalslanted\\objcrystalslanted.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "796a9c18-2ee1-438a-9108-2226a9f51991",
+            "Value": {
+                "id": "673272d2-1a4e-407e-b2cb-2a13f3606255",
+                "resourcePath": "sprites\\sprcyrstalslanted\\sprcyrstalslanted.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -440,7 +472,8 @@
         }
     ],
     "script_order": [
-        
+        "8dee1563-75b6-4e86-9382-e09f0406f504",
+        "df4f88e0-9098-4404-b3d4-4d93b0e5235a"
     ],
     "tutorial": ""
 }

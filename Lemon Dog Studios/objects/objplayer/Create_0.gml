@@ -2,12 +2,11 @@ spd = 5
 jumpspeed = 150
 window_set_caption("Arkangel")
 canjump = 0
-jumpbutton = false
+canjumpset = 5
 jumpbuttonpressed = false
 crouching = false
-maxjumps = 1
 jumping = false
-//Shoulder Dash
+//Dash
 dashing = false
 //Sliding
 sliding = false
