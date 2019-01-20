@@ -105,8 +105,23 @@ if (crouching) spd = 2
 if (sliding) betweenslidecool = 0
 else betweenslidecool++
 //Flaring
-
-
+if (!flaring){
+	flaringcool++
+}
+if flaringcool >= 100 and keyboard_check_pressed(ord("Q")){
+	flaring = 1	
+	flaringcool = 0
+}
+if flaring{
+	activeflaringcool++	
+}
+if activeflaringcool >= 10{
+	flaring = 0	
+	activeflaringcool = 0
+}
+if flaring and scrgravity() = 1{
+	physics_apply_impulse(phy_position_x,phy_position_y,0,-50)	
+}
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch

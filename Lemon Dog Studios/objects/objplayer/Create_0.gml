@@ -24,4 +24,4 @@ phy_fixed_rotation = true
 //Flare
 flaring = 0
 flaringcool = 0
-activeflarecool = 0
+activeflaringcool = 0
