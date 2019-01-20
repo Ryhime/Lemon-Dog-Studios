@@ -104,8 +104,21 @@ if (crouching) spd = 2
 //In Between Slides
 if (sliding) betweenslidecool = 0
 else betweenslidecool++
+//Flaring
+if flaring {
+	activeflarecool++
+}
+if activeflarecool >= 2{
+	flaring = 0	
+}
+if keyboard_check_pressed(ord("Q")) and flaring = 0 and flaringcool >= 100
+{
+	flaring = 1
+	flaringcool = 0
+}
+flaringcool++	
+show_debug_message(flaring)
 //Sprite Index
 if (sliding) sprite_index = sprplayerslide
 else if (crouching) sprite_index = sprplayercrouch
 else sprite_index = sprplayeridle
-show_debug_message(canjump)

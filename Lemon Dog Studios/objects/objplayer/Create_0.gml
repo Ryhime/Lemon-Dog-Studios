@@ -21,3 +21,7 @@ gamepad_set_axis_deadzone(0,deadzone)
 hsp = 0
 vsp = 0
 phy_fixed_rotation = true
+//Flare
+flaring = 0
+flaringcool = 0
+activeflarecool = 0

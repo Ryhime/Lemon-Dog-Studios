@@ -1,4 +1,4 @@
-if distance_to_object(objplayer) < 500 and created = false and keyboard_check(ord("Q")){
+if distance_to_object(objplayer) < 500 and created = false and objplayer.flaring{
 	instance_create_layer(x,y+10,layer,objcrystalslanted)
 	created = 1
 }

@@ -1,4 +1,4 @@
-if objplayer.x <= x + 250 and objplayer.x >= x - 250 and objplayer.y <= y + 250 and objplayer.y >= y - 250 and created = false and keyboard_check(ord("Q"))
+if objplayer.x <= x + 250 and objplayer.x >= x - 250 and objplayer.y <= y + 250 and objplayer.y >= y - 250 and created = false and objplayer.flaring
 {
 	created = true
 	instance_create_layer(cryactive.x,cryactive.y,layer,objcrystal)
