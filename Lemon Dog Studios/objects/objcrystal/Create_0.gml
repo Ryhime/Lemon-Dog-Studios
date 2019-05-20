@@ -1,1 +1,0 @@
-applyforce = 0
