@@ -6,10 +6,8 @@ public class CameraFollow : MonoBehaviour
 {
     Transform player;
     Transform camera;
-    [SerializeField]
-    private int yOffset=0;
-    [SerializeField]
-    private int xOffset=0;
+    private int yOffset=3;
+    private int xOffset=4;
     // Start is called before the first frame update
     void Start()
     {
