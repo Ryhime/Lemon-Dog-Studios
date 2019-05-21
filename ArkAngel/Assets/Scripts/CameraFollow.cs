@@ -6,8 +6,8 @@ public class CameraFollow : MonoBehaviour
 {
     Transform player;
     Transform camera;
-    private int yOffset=3;
-    private int xOffset=4;
+    private const int yOffset=3;
+    private const int xOffset=4;
     // Start is called before the first frame update
     void Start()
     {
