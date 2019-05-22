@@ -380,7 +380,12 @@ PrefabInstance:
     - target: {fileID: 3549651999256005981, guid: 4ae43165996cca44a9b6c4efd761d8a7,
         type: 3}
       propertyPath: slidingDistanceMx
-      value: 20
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549651999256005981, guid: 4ae43165996cca44a9b6c4efd761d8a7,
+        type: 3}
+      propertyPath: slideSpeed
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae43165996cca44a9b6c4efd761d8a7, type: 3}

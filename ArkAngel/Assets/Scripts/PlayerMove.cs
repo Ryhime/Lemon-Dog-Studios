@@ -85,12 +85,22 @@ public class PlayerMove : MonoBehaviour
         if ((Input.GetKey("down") || Input.GetKey(KeyCode.S)) && (!isRunning || isCrouching)) {
             Debug.Log("CROUCH");
             trans.localScale = new Vector2(playerScale.x, playerScale.y / 2);
-            if (!isCrouching) { trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2)); }
+            if (!isCrouching) {
+                trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2));
+                moveSpeed /= 2;
+                jumpForce /= 2;
+            }
             isCrouching = true;
         }
         else {
+            if (isCrouching)
+            {
+                moveSpeed *= 2;
+                jumpForce *= 2;
+            }
             trans.localScale = new Vector2(playerScale.x, playerScale.y);
             isCrouching = false;
+
         }
         
     }

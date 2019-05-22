@@ -158,5 +158,5 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 500
   slideCoolMx: 50
-  slidingDistanceMx: 15
-  slideSpeed: 15
+  slidingDistanceMx: 17
+  slideSpeed: 25
