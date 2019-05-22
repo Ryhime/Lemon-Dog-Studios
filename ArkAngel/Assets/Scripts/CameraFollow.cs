@@ -8,6 +8,8 @@ public class CameraFollow : MonoBehaviour
     Transform camera;
     private const int yOffset=3;
     private const int xOffset=4;
+    private int move = 1;
+    private int cameraMove = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (camera.position != player.position) { camera.position = new Vector3(player.position.x+xOffset, player.position.y+yOffset,-10); }
+        //May have to change later
+        camera.position = new Vector3(player.position.x, player.position.y, -10);
     }
 }

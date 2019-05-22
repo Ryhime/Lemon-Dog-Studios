@@ -4,19 +4,35 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Vector2 playerScale;
     Rigidbody2D rb;
     Transform trans;
+    //Movement
+    bool isRunning = false;
     [SerializeField]
-    private float moveSpeed=1;
+    float moveSpeed = 10;
+    int move = 1;
+    //Jump
     [SerializeField]
-    private float jumpForce = 10;
-    private bool canJump = false;
-    private bool isRunning = false;
-    private Vector2 playerScale;
+    float jumpForce = 500;
+    bool canJump = false;
+    //Crouching
     private bool isCrouching = false;
+    //Sliding
+    bool isSliding = false;
+    int slideCool = 0;
+    [SerializeField]
+    int slideCoolMx;
+    [SerializeField]
+    int slidingDistanceMx = 15;
+    int slidingDistance;
+    [SerializeField]
+    float slideSpeed;
+    int slideDirection = 1;
 
     private void Start()
     {
+        slideCool = slideCoolMx;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         trans = GetComponent<Transform>();
@@ -25,14 +41,49 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        walk();
+        slide();
+        if (!isSliding)
+        {
+            crouch();
+            walk();
+        }
         if (Input.GetKeyDown(KeyCode.Space) && canJump) { jump(); }
-        crouch();
     }
 
+    void slide()
+    {
+        if (isRunning && (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && slideCool>=slideCoolMx)
+        {
+            trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2));
+            slideDirection = move;
+            isSliding = true;
+            slideCool = 0;
+        }
+        else if (!isSliding)
+        {
+            slideCool++;
+        }
+
+        if (isSliding)
+        {
+            slidingDistance++;
+            rb.velocity = new Vector2(slideDirection*slideSpeed,rb.velocity.y);
+            trans.localScale = new Vector3(playerScale.x * 2, playerScale.y / 2, 0);
+            if (slidingDistance >= slidingDistanceMx)
+            {
+                isSliding = false;
+                slidingDistance = 0;
+            }
+        }
+        else
+        {
+            trans.localScale = playerScale;
+        }
+    }
     void crouch()
     {
-        if (Input.GetKey("down") || Input.GetKey(KeyCode.S) && !isRunning) {
+        if ((Input.GetKey("down") || Input.GetKey(KeyCode.S)) && (!isRunning || isCrouching)) {
+            Debug.Log("CROUCH");
             trans.localScale = new Vector2(playerScale.x, playerScale.y / 2);
             if (!isCrouching) { trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2)); }
             isCrouching = true;
@@ -46,7 +97,7 @@ public class PlayerMove : MonoBehaviour
 
     void jump()
     {
-        rb.AddForce(new Vector2(0,500));
+        rb.AddForce(new Vector2(0,jumpForce));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,14 +113,20 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
+            move = 1;
             isRunning = true;
-            trans.position = new Vector2(trans.position.x + moveSpeed, trans.position.y);
+            rb.velocity = new Vector2(moveSpeed,rb.velocity.y);
         }
         else if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
+            move = -1;
             isRunning = true;
-            trans.position = new Vector2(trans.position.x - moveSpeed, trans.position.y);
+            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         }
-        else { isRunning = false; }
+        else {
+            move = 0;
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            isRunning = false;
+        }
     }
 }
