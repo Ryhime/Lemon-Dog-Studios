@@ -6,21 +6,30 @@ public class CameraFollow : MonoBehaviour
 {
     Transform player;
     Transform camera;
-    private const int yOffset=3;
-    private const int xOffset=4;
-    private int move = 1;
-    private int cameraMove = 0;
+    int move = 1;
+    int cameraMove = 0;
+    float x;
+    float y;
+    float xCheck;
+    float yCheck;
+
+    float abs(float num)
+    {
+        if (num < 0){ num *= -1; }
+        return num;
+    }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         camera = GetComponent<Transform>();
+        x = player.position.x;
+        y = player.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //May have to change later
         camera.position = new Vector3(player.position.x, player.position.y, -10);
     }
 }

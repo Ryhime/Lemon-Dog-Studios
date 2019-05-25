@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Debugging.cs" />
+    <Compile Include="Assets\Scripts\GetSize.cs" />
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ryguy/OneDrive/Documents/GitHub/Lemon-Dog-Studios/ArkAngel/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

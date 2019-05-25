@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     Transform trans;
     //Movement
     bool isRunning = false;
+    bool isRunningFast = false;
     [SerializeField]
     float moveSpeed = 10;
     int move = 1;
@@ -41,6 +42,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        //Just calling everything
         slide();
         if (!isSliding)
         {
@@ -50,9 +52,10 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canJump) { jump(); }
     }
 
+    //Sliding
     void slide()
     {
-        if (isRunning && (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && slideCool>=slideCoolMx)
+        if (isRunningFast && (Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && slideCool>=slideCoolMx)
         {
             trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2));
             slideDirection = move;
@@ -80,10 +83,10 @@ public class PlayerMove : MonoBehaviour
             trans.localScale = playerScale;
         }
     }
+    //Crouching
     void crouch()
     {
-        if ((Input.GetKey("down") || Input.GetKey(KeyCode.S)) && (!isRunning || isCrouching)) {
-            Debug.Log("CROUCH");
+        if ((Input.GetKey("down") || Input.GetKey(KeyCode.S)) && (!isRunningFast || isCrouching)) {
             trans.localScale = new Vector2(playerScale.x, playerScale.y / 2);
             if (!isCrouching) {
                 trans.position = new Vector2(trans.position.x, trans.position.y - (playerScale.y / 2));
@@ -107,9 +110,11 @@ public class PlayerMove : MonoBehaviour
 
     void jump()
     {
+        //Add force for the jump
         rb.AddForce(new Vector2(0,jumpForce));
     }
 
+    //Find if grounded
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground") { canJump = true; } 
@@ -121,6 +126,17 @@ public class PlayerMove : MonoBehaviour
 
     void walk()
     {
+        //Running
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
+            if (!isRunningFast) { moveSpeed = moveSpeed * 1.5f; }
+            isRunningFast = true;
+        }
+        else if (isRunningFast)
+        {
+            moveSpeed = moveSpeed/1.5f;
+            isRunningFast = false;
+        }
+        //Walking
         if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
             move = 1;
