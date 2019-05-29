@@ -1,35 +1,81 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;                                                                                                                         
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow : MonoBehaviour               
 {
-    Transform player;
-    Transform camera;
-    int move = 1;
-    int cameraMove = 0;
-    float x;
-    float y;
-    float xCheck;
-    float yCheck;
+    #region Cameras
+    //The camera 
+    private Camera cam;
+    #endregion
 
-    float abs(float num)
+    #region Transforms
+    [HideInInspector]
+    //Players position
+    public Transform target;
+    #endregion
+
+    #region Floats
+    // Size of orthographic camera from start
+    public float camSize;
+
+    //How close the camera says to the player
+    public float sensitivity;
+
+    //Size of the soft zones
+    public float softX;
+    public float softY;
+    #endregion                                                                                                                                                                                                           
+
+    private void Start()
     {
-        if (num < 0){ num *= -1; }
-        return num;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        camera = GetComponent<Transform>();
-        x = player.position.x;
-        y = player.position.y;
+        #region Getting the components
+        //Setting the camera
+        cam = GetComponent<Camera>();
+        //Setting the target
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        #endregion
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()                                                                      
     {
-        camera.position = new Vector3(player.position.x, player.position.y, -10);
+        #region Setting the cameras size
+        //The cameras size
+        cam.orthographicSize = camSize;
+        #endregion
+
+        #region Updating the camera position
+        if (target.transform.position.x > transform.position.x + softX / 2)
+        {
+            Vector3 playerPos = new Vector3(target.position.x, transform.position.y, -10);
+            transform.position = Vector3.Lerp(new Vector3(transform.position.x - softX / 15, transform.position.y, -10), playerPos, sensitivity * Time.deltaTime);
+        }
+
+        if (target.transform.position.x < transform.position.x - softX / 2)
+        {
+            Vector3 playerPos = new Vector3(target.position.x, transform.position.y, -10);
+            transform.position = Vector3.Lerp(new Vector3(transform.position.x + softX / 15, transform.position.y, -10), playerPos, sensitivity * Time.deltaTime);
+        }
+
+        if (target.transform.position.y > transform.position.y + softY / 2)
+        {
+            Vector3 playerPos = new Vector3(transform.position.x, target.position.y, -10);
+            transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y - softY / 15, -10), playerPos, sensitivity * Time.deltaTime);
+        }
+
+        if (target.transform.position.y < transform.position.y - softY / 2)
+        {
+            Vector3 playerPos = new Vector3(transform.position.x, target.position.y, -10);
+            transform.position = Vector3.Lerp(new Vector3(transform.position.x, transform.position.y + softY / 15, -10), playerPos, sensitivity * Time.deltaTime);
+        }
+        #endregion
     }
+
+    private void OnDrawGizmos()
+    {
+        #region Soft zone
+        //Drawing the soft zones
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(softX, softY, 1));
+        #endregion
+    }
+
 }

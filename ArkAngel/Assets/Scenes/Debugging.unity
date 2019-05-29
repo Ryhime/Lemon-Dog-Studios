@@ -213,9 +213,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 154198616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab1c5d8f4ca4de489a24c41791d96ae, type: 3}
+  m_Script: {fileID: 11500000, guid: cb877e07fa1bf724387c74f75e576160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  camSize: 4
+  sensitivity: 5
+  softX: 2.41
+  softY: 1.64
 --- !u!1 &1128377856
 GameObject:
   m_ObjectHideFlags: 0
